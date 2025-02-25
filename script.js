@@ -2,22 +2,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const apiKey = "YOUR-API-KEY"; // replace with your api key
     const dogNames = [ "Golden Retriever", "Labrador Retriever", "German Shepherd", "Welsh Corgi", "Dachshund", "Shiba Inu", "French Bulldog", "Chihuahua"];
     
-    try {
-        const dogData = await Promise.all(dogNames.map(async (name) => {
-            const response = await fetch(`https://api.api-ninjas.com/v1/dogs?name=${encodeURIComponent(name)}`, {
-                headers: { 'X-Api-Key': apiKey }
-            });
-            if (!response.ok) {
-                throw new Error(`Failed to fetch data for ${name}`);
-            }
-            const data = await response.json();
-            return data.length ? data[0] : null;
-        }));
-        
-        populateDogCards(dogData);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+    // TODO: make a call to the following URL https://api.api-ninjas.com/v1/dogs?name={DOG NAME} and return data
+    
 });
 
 function populateDogCards(dogs) {
