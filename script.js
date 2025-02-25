@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const dogNames = [ "Golden Retriever", "Labrador Retriever", "German Shepherd", "Welsh Corgi", "Dachshund", "Shiba Inu", "French Bulldog", "Chihuahua"];
     
     // TODO: make a call to the following URL https://api.api-ninjas.com/v1/dogs?name={DOG NAME} and return data
+    // HINT: use dogNames.map() function to fetch data for each of the given dogs
     
 });
 
