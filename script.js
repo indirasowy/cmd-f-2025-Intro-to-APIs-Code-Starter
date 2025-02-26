@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayDogData(index, dogData) {
         const dogCard = document.getElementById("dogCard" + (index + 1));
 
-        const imageUrl = ""; // TODO: assign dog image link
-        const dogName = ""; // TODO: ssign dog name
-        const lifeExpectancy = ""; // TODO: assign life expectancy
-        const energyLevel = ""; // TODO: assign energy level
-        const trainability = ""; // TODO: assign trainability
+        const imageUrl = dogData.image_link;
+        const dogName = dogData.name;
+        const lifeExpectancy = dogData.min_life_expectancy + " - " + dogData.max_life_expectancy;
+        const energyLevel = dogData.energy;
+        const trainability = dogData.trainability;
 
         dogCard.innerHTML = `
             <img src="${imageUrl}" alt="${dogName}">
@@ -28,10 +28,18 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
     }
 
-    // TODO: Write the fetch call to get data for each dog from the API
-    // You should be making a call to the following URL https://api.api-ninjas.com/v1/dogs?name={DOG NAME} and return the data
     dogNames.forEach(function(name, index) {
-        // Your fetch call goes here
-
+        fetch("https://api.api-ninjas.com/v1/dogs?name=" + encodeURIComponent(name), requestOptions)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.length > 0) {
+                    displayDogData(index, data[0]);
+                }
+            })
+            .catch(function(error) {
+                console.error("Error fetching data:", error);
+            });
     });
 });
