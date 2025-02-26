@@ -1,21 +1,37 @@
-document.addEventListener("DOMContentLoaded", async () => {
-    const apiKey = "YOUR-API-KEY"; // replace with your api key
-    const dogNames = [ "Golden Retriever", "Labrador Retriever", "German Shepherd", "Welsh Corgi", "Dachshund", "Shiba Inu", "French Bulldog", "Chihuahua"];
-    
-    // TODO: make a call to the following URL https://api.api-ninjas.com/v1/dogs?name={DOG NAME} and return data
-    // HINT: use dogNames.map() function to fetch data for each of the given dogs
-    
-});
+document.addEventListener("DOMContentLoaded", function() {
+    const myHeaders = new Headers();
+    myHeaders.append("x-api-key", "YOUR-API-KEY"); // replace with your api key
 
-function populateDogCards(dogs) {
-    dogs.forEach((dog, index) => {
-        if (document.getElementById(`dogImage${index + 1}`)) {
-            document.getElementById(`dogImage${index + 1}`).src = dog.image_link;
-            document.getElementById(`dogImage${index + 1}`).alt = dog.name;
-            document.getElementById(`dogName${index + 1}`).textContent = dog.name;
-            document.getElementById(`dogLife${index + 1}`).textContent = `${dog.min_life_expectancy} - ${dog.max_life_expectancy} years`;
-            document.getElementById(`dogEnergy${index + 1}`).textContent = dog.energy;
-            document.getElementById(`dogTrain${index + 1}`).textContent = dog.trainability;
-        }
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    const dogNames = [ "Golden Retriever", "Labrador Retriever", "German Shepherd", "Welsh Corgi", "Dachshund", "Shiba Inu", "French Bulldog", "Chihuahua"];
+
+    function displayDogData(index, dogData) {
+        const dogCard = document.getElementById("dogCard" + (index + 1));
+
+        const imageUrl = ""; // TODO: assign dog image link
+        const dogName = ""; // TODO: ssign dog name
+        const lifeExpectancy = ""; // TODO: assign life expectancy
+        const energyLevel = ""; // TODO: assign energy level
+        const trainability = ""; // TODO: assign trainability
+
+        dogCard.innerHTML = `
+            <img src="${imageUrl}" alt="${dogName}">
+            <h3>${dogName}</h3>
+            <p><strong>Life Expectancy:</strong> ${lifeExpectancy} years</p>
+            <p><strong>Energy Level:</strong> ${energyLevel}/5</p>
+            <p><strong>Trainability:</strong> ${trainability}/5</p>
+        `;
+    }
+
+    // TODO: Write the fetch call to get data for each dog from the API
+    // You should be making a call to the following URL https://api.api-ninjas.com/v1/dogs?name={DOG NAME} and return the data
+    dogNames.forEach(function(name, index) {
+        // Your fetch call goes here
+
     });
-}
+});
