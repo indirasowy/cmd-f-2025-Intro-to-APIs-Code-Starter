@@ -29,13 +29,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     dogNames.forEach(function(name, index) {
-        fetch("https://api.api-ninjas.com/v1/dogs?name=" + encodeURIComponent(name), requestOptions)
-            .then(function(response) {
-                return response.json();
+        fetch("https://api.api-ninjas.com/v1/dogs?name=" + encodeURIComponent(name), requestOptions) // initiates an HTTP request to the API
+            .then(function(response) { // used to handle the response when the API call is successful
+                return response.json(); // converts the response from a raw HTTP response into a JavaScript object
             })
-            .then(function(data) {
+            .then(function(data) { // once the data is available from the previous promise, this function runs
+                console.log('data', data);
                 if (data.length > 0) {
-                    displayDogData(index, data[0]);
+                    displayDogData(index, data[0]); // data[0] is the first dog in the response
                 }
             })
             .catch(function(error) {
