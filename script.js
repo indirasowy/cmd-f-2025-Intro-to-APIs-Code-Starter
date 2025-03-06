@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const dogCard = document.getElementById("dogCard" + (index + 1));
 
         const imageUrl = ""; // TODO: assign dog image link
-        const dogName = ""; // TODO: ssign dog name
+        const dogName = ""; // TODO: assign dog name
         const lifeExpectancy = ""; // TODO: assign life expectancy
         const energyLevel = ""; // TODO: assign energy level
         const trainability = ""; // TODO: assign trainability
